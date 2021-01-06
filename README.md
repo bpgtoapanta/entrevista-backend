@@ -10,7 +10,8 @@ Java 8
 
 ---------------------------
 Para el backend 
-Se peude abrir en Spring Tool Suite 4
+Se puede abrir en Spring Tool Suite 4
+
 Para correr el backend primero (***)
 1.-se debe importar el proyecto como proyecto Maven
 
