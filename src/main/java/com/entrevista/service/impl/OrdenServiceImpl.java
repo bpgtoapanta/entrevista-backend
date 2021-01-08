@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.entrevista.model.Orden;
+import com.entrevista.repo.IArticuloRepo;
 import com.entrevista.repo.IOrdenRepo;
 import com.entrevista.service.IOrdenService;
 
@@ -15,12 +16,19 @@ public class OrdenServiceImpl implements IOrdenService {
 	
 	@Autowired
 	private IOrdenRepo repo;
+	
+	@Autowired
+	private IArticuloRepo articuloRepo;
 
 	@Override
 	public Orden registrar(Orden t) {
 		t.getDetalleOrden().forEach(det -> {
 			det.setOrden(t);
 		});
+		t.getDetalleOrden().forEach(det ->{
+			articuloRepo.save(det.getArticulo());
+		});
+		
 		return repo.save(t);
 	}
 
